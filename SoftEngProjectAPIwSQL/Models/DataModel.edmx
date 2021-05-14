@@ -1,0 +1,680 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SoftEngProjectDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="adminId" />
+          </Key>
+          <Property Name="adminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="organizerId" Type="int" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="artistId" />
+          </Key>
+          <Property Name="artistId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="contact" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="categoryId" />
+          </Key>
+          <Property Name="categoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="commentId" />
+          </Key>
+          <Property Name="commentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="eventId" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="detail" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventsList">
+          <Key>
+            <PropertyRef Name="eventId" />
+          </Key>
+          <Property Name="eventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="detail" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="artistId" Type="int" Nullable="false" />
+          <Property Name="date" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="guestCount" Type="int" Nullable="false" />
+          <Property Name="guestLimit" Type="int" Nullable="false" />
+          <Property Name="VIPLimit" Type="int" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="location" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="contacts" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="int" Nullable="false" />
+          <Property Name="categoryId" Type="int" Nullable="false" />
+          <Property Name="imageURL" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventTable">
+          <Key>
+            <PropertyRef Name="eventId" />
+          </Key>
+          <Property Name="eventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="detail" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="artistId" Type="int" Nullable="false" />
+          <Property Name="date" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="guestCount" Type="int" Nullable="false" />
+          <Property Name="guestLimit" Type="int" Nullable="false" />
+          <Property Name="VIPLimit" Type="int" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="location" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="contact" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="price" Type="int" Nullable="false" />
+          <Property Name="categoryId" Type="int" Nullable="false" />
+          <Property Name="imageURL" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Organizer">
+          <Key>
+            <PropertyRef Name="organizerId" />
+          </Key>
+          <Property Name="organizerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="250" />
+          <Property Name="location" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="contact" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="productId" />
+          </Key>
+          <Property Name="productId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eventId" Type="int" Nullable="false" />
+          <Property Name="imageURL" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="detail" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="size" Type="int" Nullable="false" />
+          <Property Name="price" Type="int" Nullable="false" />
+          <Property Name="discountId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mail" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="events" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="eventsHistory" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="points" Type="int" Nullable="false" />
+          <Property Name="phoneNumber" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="favorites" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="profilePhotoURL" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_Admin_Organizer">
+          <End Role="Organizer" Type="Self.Organizer" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizer">
+              <PropertyRef Name="organizerId" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="organizerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admin_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_EventsList">
+          <End Role="EventsList" Type="Self.EventsList" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventsList">
+              <PropertyRef Name="eventId" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="eventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventsList_Artist">
+          <End Role="Artist" Type="Self.Artist" Multiplicity="1" />
+          <End Role="EventsList" Type="Self.EventsList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="artistId" />
+            </Principal>
+            <Dependent Role="EventsList">
+              <PropertyRef Name="artistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventsList_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="EventsList" Type="Self.EventsList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="categoryId" />
+            </Principal>
+            <Dependent Role="EventsList">
+              <PropertyRef Name="categoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_EventsList">
+          <End Role="EventsList" Type="Self.EventsList" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventsList">
+              <PropertyRef Name="eventId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="eventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SoftEngProjectDBModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Artist" EntityType="Self.Artist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventsList" EntityType="Self.EventsList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventTable" EntityType="Self.EventTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organizer" EntityType="Self.Organizer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Admin_Organizer" Association="Self.FK_Admin_Organizer">
+            <End Role="Organizer" EntitySet="Organizer" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admin_User" Association="Self.FK_Admin_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_EventsList" Association="Self.FK_Comments_EventsList">
+            <End Role="EventsList" EntitySet="EventsList" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_User" Association="Self.FK_Comments_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventsList_Artist" Association="Self.FK_EventsList_Artist">
+            <End Role="Artist" EntitySet="Artist" />
+            <End Role="EventsList" EntitySet="EventsList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventsList_Category" Association="Self.FK_EventsList_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="EventsList" EntitySet="EventsList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_EventsList" Association="Self.FK_Product_EventsList">
+            <End Role="EventsList" EntitySet="EventsList" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SoftEngProjectDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="adminId" />
+          </Key>
+          <Property Name="adminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="organizerId" Type="Int32" Nullable="false" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Organizer" Relationship="Self.FK_Admin_Organizer" FromRole="Admin" ToRole="Organizer" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Admin_User" FromRole="Admin" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="artistId" />
+          </Key>
+          <Property Name="artistId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contact" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EventsList" Relationship="Self.FK_EventsList_Artist" FromRole="Artist" ToRole="EventsList" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="categoryId" />
+          </Key>
+          <Property Name="categoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EventsList" Relationship="Self.FK_EventsList_Category" FromRole="Category" ToRole="EventsList" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="commentId" />
+          </Key>
+          <Property Name="commentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="eventId" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="detail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EventsList" Relationship="Self.FK_Comments_EventsList" FromRole="Comments" ToRole="EventsList" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Comments_User" FromRole="Comments" ToRole="User" />
+        </EntityType>
+        <EntityType Name="EventsList">
+          <Key>
+            <PropertyRef Name="eventId" />
+          </Key>
+          <Property Name="eventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="detail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="artistId" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="guestCount" Type="Int32" Nullable="false" />
+          <Property Name="guestLimit" Type="Int32" Nullable="false" />
+          <Property Name="VIPLimit" Type="Int32" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contacts" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="price" Type="Int32" Nullable="false" />
+          <Property Name="categoryId" Type="Int32" Nullable="false" />
+          <Property Name="imageURL" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Artist" Relationship="Self.FK_EventsList_Artist" FromRole="EventsList" ToRole="Artist" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_EventsList_Category" FromRole="EventsList" ToRole="Category" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_EventsList" FromRole="EventsList" ToRole="Comments" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Product_EventsList" FromRole="EventsList" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="EventTable">
+          <Key>
+            <PropertyRef Name="eventId" />
+          </Key>
+          <Property Name="eventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="detail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="artistId" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="guestCount" Type="Int32" Nullable="false" />
+          <Property Name="guestLimit" Type="Int32" Nullable="false" />
+          <Property Name="VIPLimit" Type="Int32" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contact" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="price" Type="Int32" Nullable="false" />
+          <Property Name="categoryId" Type="Int32" Nullable="false" />
+          <Property Name="imageURL" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Organizer">
+          <Key>
+            <PropertyRef Name="organizerId" />
+          </Key>
+          <Property Name="organizerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contact" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_Admin_Organizer" FromRole="Organizer" ToRole="Admin" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="productId" />
+          </Key>
+          <Property Name="productId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eventId" Type="Int32" Nullable="false" />
+          <Property Name="imageURL" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="detail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="size" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Int32" Nullable="false" />
+          <Property Name="discountId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EventsList" Relationship="Self.FK_Product_EventsList" FromRole="Product" ToRole="EventsList" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="events" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="eventsHistory" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="points" Type="Int32" Nullable="false" />
+          <Property Name="phoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="favorites" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="profilePhotoURL" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_Admin_User" FromRole="User" ToRole="Admin" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_User" FromRole="User" ToRole="Comments" />
+        </EntityType>
+        <Association Name="FK_Admin_Organizer">
+          <End Role="Organizer" Type="Self.Organizer" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizer">
+              <PropertyRef Name="organizerId" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="organizerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admin_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventsList_Artist">
+          <End Role="Artist" Type="Self.Artist" Multiplicity="1" />
+          <End Role="EventsList" Type="Self.EventsList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="artistId" />
+            </Principal>
+            <Dependent Role="EventsList">
+              <PropertyRef Name="artistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventsList_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="EventsList" Type="Self.EventsList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="categoryId" />
+            </Principal>
+            <Dependent Role="EventsList">
+              <PropertyRef Name="categoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_EventsList">
+          <End Role="EventsList" Type="Self.EventsList" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventsList">
+              <PropertyRef Name="eventId" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="eventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_EventsList">
+          <End Role="EventsList" Type="Self.EventsList" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventsList">
+              <PropertyRef Name="eventId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="eventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SoftEngProjectDBEntitiesFinal" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <EntitySet Name="Artist" EntityType="Self.Artist" />
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" />
+          <EntitySet Name="EventsList" EntityType="Self.EventsList" />
+          <EntitySet Name="EventTable" EntityType="Self.EventTable" />
+          <EntitySet Name="Organizer" EntityType="Self.Organizer" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Admin_Organizer" Association="Self.FK_Admin_Organizer">
+            <End Role="Organizer" EntitySet="Organizer" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admin_User" Association="Self.FK_Admin_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventsList_Artist" Association="Self.FK_EventsList_Artist">
+            <End Role="Artist" EntitySet="Artist" />
+            <End Role="EventsList" EntitySet="EventsList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventsList_Category" Association="Self.FK_EventsList_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="EventsList" EntitySet="EventsList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_EventsList" Association="Self.FK_Comments_EventsList">
+            <End Role="EventsList" EntitySet="EventsList" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_User" Association="Self.FK_Comments_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_EventsList" Association="Self.FK_Product_EventsList">
+            <End Role="EventsList" EntitySet="EventsList" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SoftEngProjectDBModelStoreContainer" CdmEntityContainer="SoftEngProjectDBEntitiesFinal">
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="SoftEngProjectDBModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="adminId" ColumnName="adminId" />
+                <ScalarProperty Name="organizerId" ColumnName="organizerId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Artist">
+            <EntityTypeMapping TypeName="SoftEngProjectDBModel.Artist">
+              <MappingFragment StoreEntitySet="Artist">
+                <ScalarProperty Name="artistId" ColumnName="artistId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="SoftEngProjectDBModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="SoftEngProjectDBModel.Comments">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="commentId" ColumnName="commentId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="eventId" ColumnName="eventId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventsList">
+            <EntityTypeMapping TypeName="SoftEngProjectDBModel.EventsList">
+              <MappingFragment StoreEntitySet="EventsList">
+                <ScalarProperty Name="eventId" ColumnName="eventId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="artistId" ColumnName="artistId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="guestCount" ColumnName="guestCount" />
+                <ScalarProperty Name="guestLimit" ColumnName="guestLimit" />
+                <ScalarProperty Name="VIPLimit" ColumnName="VIPLimit" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="contacts" ColumnName="contacts" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+                <ScalarProperty Name="imageURL" ColumnName="imageURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventTable">
+            <EntityTypeMapping TypeName="SoftEngProjectDBModel.EventTable">
+              <MappingFragment StoreEntitySet="EventTable">
+                <ScalarProperty Name="eventId" ColumnName="eventId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="artistId" ColumnName="artistId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="guestCount" ColumnName="guestCount" />
+                <ScalarProperty Name="guestLimit" ColumnName="guestLimit" />
+                <ScalarProperty Name="VIPLimit" ColumnName="VIPLimit" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+                <ScalarProperty Name="imageURL" ColumnName="imageURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organizer">
+            <EntityTypeMapping TypeName="SoftEngProjectDBModel.Organizer">
+              <MappingFragment StoreEntitySet="Organizer">
+                <ScalarProperty Name="organizerId" ColumnName="organizerId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="SoftEngProjectDBModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="eventId" ColumnName="eventId" />
+                <ScalarProperty Name="imageURL" ColumnName="imageURL" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="discountId" ColumnName="discountId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SoftEngProjectDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="SoftEngProjectDBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="events" ColumnName="events" />
+                <ScalarProperty Name="eventsHistory" ColumnName="eventsHistory" />
+                <ScalarProperty Name="points" ColumnName="points" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="favorites" ColumnName="favorites" />
+                <ScalarProperty Name="profilePhotoURL" ColumnName="profilePhotoURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
