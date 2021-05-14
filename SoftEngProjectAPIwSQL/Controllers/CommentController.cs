@@ -13,7 +13,7 @@ namespace SoftEngProjectAPIwSQL.Controllers
     {
         SoftEngProjectDBEntitiesFinal db = new SoftEngProjectDBEntitiesFinal();
 
-        public List<CommentModel> GetAllCategory()
+        public List<CommentModel> GetAllComments()
         {
             List<CommentModel> artistList = db.Comments.Select(x => new CommentModel()
             {

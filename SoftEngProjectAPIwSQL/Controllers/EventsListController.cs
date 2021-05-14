@@ -13,7 +13,7 @@ namespace SoftEngProjectAPIwSQL.Controllers
     {
         SoftEngProjectDBEntitiesFinal db = new SoftEngProjectDBEntitiesFinal();
 
-        public List<EventsListModel> GetAllCategory()
+        public List<EventsListModel> GetAllEvents()
         {
             List<EventsListModel> eventList = db.EventsList.Select(x => new EventsListModel()
             {
